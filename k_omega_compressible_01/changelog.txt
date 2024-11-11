@@ -44,10 +44,16 @@ laplacianSchemes
     default              Gauss linear corrected;
 
 TO DO:
-scale mesh to match Reynolds nr
-}
+Re = 4e4
+scaling:
+Re = rho*v*l/mu
+l = Re*mu/(rho*v)
 
 added scaling file in system
 
 find scaling for achieving Re:
-l = (Re*mu)/(rho*U) = 1.31496
+l = 0.011697520654832238
+
+transformPoints -scale '(0.011697520654832238 0.011697520654832238 1)'
+
+changed omega to 1
