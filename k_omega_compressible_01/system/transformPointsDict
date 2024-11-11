@@ -1,0 +1,23 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version: 2406                                   |
+|   \\  /    A nd           | Web:      www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      transformPointsDict;
+}
+
+transform
+{
+    type    scale;
+    scaleFactors (1.3149631374534319 1.3149631374534319 1); // Adjust scale factors for x, y, z directions
+}
+
+// ************************************************************************* //
