@@ -1,0 +1,143 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0; 
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     rhoPimpleFoam;
+
+startFrom       latestTime;
+
+startTime       0.0;
+
+stopAt          endTime;
+
+endTime         0.5;
+
+deltaT          2e-5;
+
+writeControl    adjustable;
+
+writeInterval   0.001;
+
+purgeWrite      200;
+
+writeFormat     ascii;
+
+writePrecision   8;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+adjustTimeStep  yes;
+
+maxCo           0.9;
+
+functions
+{
+    #include "FOMachNo"
+    #includeFunc solverInfo
+    fieldAverage1
+    {
+        type            fieldAverage;
+        libs            (fieldFunctionObjects);
+        writeControl    writeTime;
+        timeStart       0.002;
+        fields
+        (
+            U
+            {
+                mean        on;
+                prime2Mean  off;
+                base        time;
+            }
+
+            p
+            {
+                mean        on;
+                prime2Mean  off;
+                base        time;
+            }
+            nut
+            {
+                mean        on;
+                prime2Mean  off;
+                base        time;
+            }
+        );
+    }
+
+    forces
+    {
+        type            forceCoeffs;
+        libs            (forces);
+//        outputControl       timeStep;
+        outputInterval      0.01;
+
+        patches
+        (
+           Cyli 
+        );
+        p               p;
+        U               U;
+        rho             rhoInf;
+        rhoInf      1;
+
+        CofR        (0 0 0);
+        liftDir     (0 1 0);
+        dragDir     (1 0 0);
+        pitchAxis   (0 0 1);
+        magUInf     51.47188067851222; // this is the u infinity magnitude
+        lRef        0.011697520654832238; //diameter circle
+        Aref        0.011697520654832238; // ref area, in our case length times depth where depth = 1
+    }
+    sample
+    {
+        type            sets;
+        libs            (sampling);
+        writeControl    writeTime;
+        interpolationScheme cellPoint;
+        setFormat raw;
+    sets
+       (
+
+   top
+    {
+        type    cloud;
+        axis    x;
+        points   (
+        #include "topcyl.dat"
+         );
+    interpolate true ;
+    }
+   bottom
+    {
+        type    cloud;
+        axis    x;
+        points   (
+        #include "botcyl.dat"
+         );
+    interpolate true ;
+    }
+);
+fields          ( p pMean  );
+}
+}
+
+
+// ************************************************************************* //

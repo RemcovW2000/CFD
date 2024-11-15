@@ -1,0 +1,217 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2406                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _be01ca78-20240625 OPENFOAM=2406 version=2406
+Arch   : "LSB;label=32;scalar=64"
+Exec   : rhoPimpleFoam
+Date   : Nov 12 2024
+Time   : 22:08:28
+Host   : DESKTOP-QF1PE18
+PID    : 1222
+I/O    : uncollated
+Case   : /home/remcovw/openfoam/GITHUB/rhoPimpleFoam_yplus1_omega98_1
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0.002
+
+
+PIMPLE: Operating solver in PISO mode
+
+Reading thermophysical properties
+
+Selecting thermodynamics package
+{
+    type            hePsiThermo;
+    mixture         pureMixture;
+    transport       sutherland;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+pressureControl
+    pMax 202840.54
+    pMin 10131.833
+
+Creating turbulence model
+
+Selecting turbulence model type RAS
+Selecting RAS turbulence model kOmega
+RAS
+{
+    RASModel        kOmega;
+    turbulence      on;
+    printCoeffs     on;
+    betaStar        0.09;
+    beta            0.072;
+    gamma           0.52;
+    alphaK          0.5;
+    alphaOmega      0.5;
+}
+
+Creating field dpdt
+
+Creating field kinetic energy K
+
+No MRF models present
+
+Creating finite volume options from "system/fvOptions"
+
+Selecting finite volume options type limitTemperature
+    Source: limitT
+    - selecting all cells
+    - selected 86779 cell(s) with volume 0.059551298
+Courant Number mean: 0.086839397 max: 0.88821762
+
+Starting time loop
+
+fieldAverage fieldAverage1:
+    Restarting averaging for fields:
+        U: starting averaging at time 0.002
+        p: starting averaging at time 0.002
+        nut: starting averaging at time 0.002
+
+forceCoeffs forces:
+    p: p
+    U: U
+    rho: rhoInf
+    Freestream density (rhoInf) set to 1
+    Not including porosity effects
+    magUInf: 51.471881
+    lRef   : 0.011697521
+    Aref   : 0.011697521
+    rhoInf : 1
+    Selecting all coefficients
+    - Drag force: Cd
+    - Drag force front: Cd(f)
+    - Drag force rear: Cd(r)
+    - Lift force: Cl
+    - Lift force front: Cl(f)
+    - Lift force rear: Cl(r)
+    - Pitch moment: CmPitch
+    - Roll moment: CmRoll
+    - Yaw moment: CmYaw
+    - Side force: Cs
+    - Side force front: Cs(f)
+    - Side force rear: Cs(r)
+
+
+--> FOAM Warning :
+    From void Foam::cloudSet::calcSamples(Foam::DynamicList<Foam::Vector<double> >&, Foam::DynamicList<int>&, Foam::DynamicList<int>&, Foam::DynamicList<int>&, Foam::DynamicList<double>&) const
+    in file sampledSet/cloud/cloudSet.C at line 128
+    For sample set top did not found 256 points out of 256
+Print missing points by setting the debug flag for cloud
+--> FOAM Warning :
+    From void Foam::cloudSet::calcSamples(Foam::DynamicList<Foam::Vector<double> >&, Foam::DynamicList<int>&, Foam::DynamicList<int>&, Foam::DynamicList<int>&, Foam::DynamicList<double>&) const
+    in file sampledSet/cloud/cloudSet.C at line 128
+    For sample set bottom did not found 256 points out of 256
+Print missing points by setting the debug flag for cloud
+--> FOAM Warning :
+    From Foam::autoPtr<Foam::coordSet> Foam::coordSet::gatherSort(Foam::labelList&) const
+    in file coordSet/coordSet.C at line 223
+    Gathered empty coordSet: top
+--> FOAM Warning :
+    From Foam::autoPtr<Foam::coordSet> Foam::coordSet::gatherSort(Foam::labelList&) const
+    in file coordSet/coordSet.C at line 223
+    Gathered empty coordSet: bottom
+Sampled set:
+    top -> raw
+    bottom -> raw
+
+Courant Number mean: 0.086839397 max: 0.88821762
+deltaT = 1.7921147e-06
+Time = 0.00200179
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.00091666572, Final residual = 4.7389351e-07, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.0014897993, Final residual = 5.231775e-07, No Iterations 2
+DILUPBiCGStab:  Solving for e, Initial residual = 0.0089675064, Final residual = 4.7200796e-07, No Iterations 4
+limitTemperature=limitT, Type=Lower, LimitedCells=0, CellsPercent=0, Tmin=101, UnlimitedTmin=291.00335
+limitTemperature=limitT, Type=Upper, LimitedCells=0, CellsPercent=0, Tmax=1000, UnlimitedTmax=294.15112
+GAMG:  Solving for p, Initial residual = 0.012498644, Final residual = 0.00011201425, No Iterations 3
+GAMG:  Solving for p, Initial residual = 0.00012692654, Final residual = 1.0876535e-06, No Iterations 25
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.6403185e-09, global = 1.8442435e-09, cumulative = 3.8342328e-07
+GAMG:  Solving for p, Initial residual = 0.00031317372, Final residual = 3.0705622e-06, No Iterations 12
+GAMG:  Solving for p, Initial residual = 8.1111537e-06, Final residual = 8.4169974e-07, No Iterations 11
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.8176666e-09, global = -1.389375e-09, cumulative = 3.8203391e-07
+DILUPBiCGStab:  Solving for omega, Initial residual = 2.4033389e-06, Final residual = 3.0974842e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 8.4163377e-05, Final residual = 3.2332124e-07, No Iterations 2
+ExecutionTime = 2.31 s  ClockTime = 4 s
+
+forceCoeffs forces write:
+    Coefficient	Total	Pressure	Viscous	Internal
+    Cd:	1.9357348	1.8992695	0.036465362	0
+    Cd(f):	-13.485622	-13.277617	-0.20800537	0
+    Cd(r):	15.421357	15.176886	0.24447074	0
+    Cl:	0.33813999	0.33284714	0.0052928487	0
+    Cl(f):	0.17023919	0.16642357	0.0038156223	0
+    Cl(r):	0.1679008	0.16642357	0.0014772264	0
+    CmPitch:	0.0011691979	-1.7265612e-11	0.0011691979	0
+    CmRoll:	-14.45349	-14.227252	-0.22623806	0
+    CmYaw:	82.741245	81.182566	1.5586791	0
+    Cs:	2.5221358e-21	-2.9594658e-20	3.2116794e-20	0
+    Cs(f):	82.741245	81.182566	1.5586791	0
+    Cs(r):	-82.741245	-81.182566	-1.5586791	0
+
+    writing force and moment coefficient files.
+
+Courant Number mean: 0.088011867 max: 0.90005506
+deltaT = 1.7921147e-06
+Time = 0.00200358
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.00091926107, Final residual = 4.6074349e-07, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.0015004106, Final residual = 5.1692943e-07, No Iterations 2
+DILUPBiCGStab:  Solving for e, Initial residual = 0.010276876, Final residual = 6.0142153e-07, No Iterations 4
+limitTemperature=limitT, Type=Lower, LimitedCells=0, CellsPercent=0, Tmin=101, UnlimitedTmin=290.9952
+limitTemperature=limitT, Type=Upper, LimitedCells=0, CellsPercent=0, Tmax=1000, UnlimitedTmax=294.15087
+GAMG:  Solving for p, Initial residual = 0.012950748, Final residual = 9.5619076e-05, No Iterations 3
+GAMG:  Solving for p, Initial residual = 0.00010978542, Final residual = 9.728229e-07, No Iterations 23
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.2505279e-09, global = 1.565633e-09, cumulative = 3.8359954e-07
+GAMG:  Solving for p, Initial residual = 0.00031471809, Final residual = 2.4179007e-06, No Iterations 12
+GAMG:  Solving for p, Initial residual = 7.5857127e-06, Final residual = 9.1258126e-07, No Iterations 6
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.0502528e-09, global = 5.0985769e-10, cumulative = 3.841094e-07
+DILUPBiCGStab:  Solving for omega, Initial residual = 2.4203024e-06, Final residual = 3.1080538e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 8.4074349e-05, Final residual = 3.2570432e-07, No Iterations 2
+ExecutionTime = 2.98 s  ClockTime = 5 s
+
+forceCoeffs forces write:
+    Coefficient	Total	Pressure	Viscous	Internal
+    Cd:	1.9317008	1.8952843	0.036416539	0
+    Cd(f):	-13.437096	-13.227705	-0.20939077	0
+    Cd(r):	15.368797	15.122989	0.24580731	0
+    Cl:	0.33695752	0.33163283	0.0053246889	0
+    Cl(f):	0.16966393	0.16581642	0.0038475154	0
+    Cl(r):	0.16729359	0.16581642	0.0014771734	0
+    CmPitch:	0.0011851709	-5.1985079e-11	0.001185171	0
+    CmRoll:	-14.402946	-14.175347	-0.22759904	0
+    CmYaw:	82.568813	81.012221	1.5565922	0
+    Cs:	2.0596069e-21	-2.9682628e-20	3.1742235e-20	0
+    Cs(f):	82.568813	81.012221	1.5565922	0
+    Cs(r):	-82.568813	-81.012221	-1.5565922	0
+
+    writing force and moment coefficient files.
+
+Courant Number mean: 0.088002541 max: 0.89980553
+deltaT = 1.7921147e-06

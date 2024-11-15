@@ -1,0 +1,134 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2406                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       dictionary;
+    location    "0.094/uniform/functionObjects";
+    object      functionObjectProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+cdf7e925f5746741c316f5fbcf39ad0dfca90775
+{
+    solverInfo
+    {
+        scalar
+        {
+            Ux_initial      2.1778009e-05;
+            Ux_final        5.2834936e-07;
+            Uy_initial      0.00014635504;
+            Uy_final        4.6723811e-07;
+            e_initial       5.8460132e-05;
+            e_final         3.5447995e-07;
+            k_initial       1.9323926e-05;
+            k_final         3.9885229e-07;
+            omega_initial   5.198952e-06;
+            omega_final     5.958278e-08;
+            p_initial       7.536509900000001e-05;
+            p_final         7.266930199999999e-07;
+        }
+        label
+        {
+            Ux_iters        1;
+            Uy_iters        1;
+            e_iters         1;
+            k_iters         1;
+            omega_iters     1;
+            p_iters         3;
+        }
+    }
+    forces
+    {
+        scalar
+        {
+            Cd              1.581289969759434;
+            CdPressure      1.546214728253982;
+            CdViscous       0.03507524150545206;
+            CdInternal      0;
+            Cd(f)           -8.77436557176892;
+            Cd(f)Pressure   -8.618282851647379;
+            Cd(f)Viscous    -0.1560827201215415;
+            Cd(f)Internal   0;
+            Cd(r)           10.35565554152836;
+            Cd(r)Pressure   10.16449757990136;
+            Cd(r)Viscous    0.1911579616269936;
+            Cd(r)Internal   0;
+            Cl              0.2237738171001656;
+            ClPressure      0.219711962053214;
+            ClViscous       0.004061855046951539;
+            ClInternal      0;
+            Cl(f)           0.1127447711200628;
+            Cl(f)Pressure   0.1098559810210633;
+            Cl(f)Viscous    0.002888790098999519;
+            Cl(f)Internal   0;
+            Cl(r)           0.1110290459801028;
+            Cl(r)Pressure   0.1098559810321507;
+            Cl(r)Viscous    0.00117306494795202;
+            Cl(r)Internal   0;
+            CmPitch         0.0008578625699800358;
+            CmPitchPressure -5.543714143699934e-12;
+            CmPitchViscous  0.0008578625755237499;
+            CmPitchInternal 0;
+            CmRoll          -9.565010556648637;
+            CmRollPressure  -9.39139021577437;
+            CmRollViscous   -0.1736203408742676;
+            CmRollInternal  0;
+            CmYaw           67.59081759373461;
+            CmYawPressure   66.09155794117899;
+            CmYawViscous    1.499259652555617;
+            CmYawInternal   0;
+            Cs              -8.620920445265668e-20;
+            CsPressure      -8.614616949835012e-20;
+            CsViscous       -6.303495430655025e-23;
+            CsInternal      0;
+            Cs(f)           67.59081759373461;
+            Cs(f)Pressure   66.09155794117899;
+            Cs(f)Viscous    1.499259652555617;
+            Cs(f)Internal   0;
+            Cs(r)           -67.59081759373461;
+            Cs(r)Pressure   -66.09155794117899;
+            Cs(r)Viscous    -1.499259652555617;
+            Cs(r)Internal   0;
+        }
+    }
+    sample
+    {
+        scalar
+        {
+            average(top,p)  0;
+            min(top,p)      1e+300;
+            max(top,p)      -1e+300;
+            average(bottom,p) 0;
+            min(bottom,p)   1e+300;
+            max(bottom,p)   -1e+300;
+            average(p)      0;
+            min(p)          1e+300;
+            max(p)          -1e+300;
+        }
+        label
+        {
+            size(top,p)     0;
+            size(bottom,p)  0;
+            size(p)         0;
+        }
+    }
+}
+
+sample
+{
+    p
+    {
+        file            "<case>/postProcessing/sample/0.094/bottom_p.xy";
+    }
+}
+
+
+// ************************************************************************* //

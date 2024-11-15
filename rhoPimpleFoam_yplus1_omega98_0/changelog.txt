@@ -1,0 +1,61 @@
+temperature set to 293 (for assignment)
+pressure set to assignment temperature
+
+thermophysical properties:
+transport set to Sutherland,
+Cp, Cv set for dimensional
+
+changed inlet temperature to: total temperature, gamma 1.4 and T0:
+T0 = T + (u^2) / (2*Cp) (NOT YET SET, DO SO AFTER FINDING Ux)
+Cp = 1005
+T0 = 293 + (51.47^2)/(2*1005) = 294.3179904975124
+
+find U:
+M = 0.15
+V_m = sqrt(gamma*R*T) = sqrt(1.4*287.052874*293) = 343.15 m/s
+Ux = 51.47188067851222
+
+changed total pressure at inlet:
+p_tot = Ps + 1/2*rho*v**2
+rho = 1.2047226972825444 (at this temp and pressure)
+p_tot = 102920.86875
+
+changed outlet bcondition to freestreamPressure, uniform value of pOut;
+changed K:
+U = 51.4718806
+I = 0.01
+k = (3/2)*(U*I)**2 = 0.39740317387509844
+
+changing numerical schemes:
+divSchemes
+{
+    div(phi,U)           bounded Gauss limitedLinear 1;
+    div(phi,k)           bounded Gauss limitedLinear 1;
+    div(phi,omega)       bounded Gauss limitedLinear 1;
+}
+
+gradSchemes
+{
+    default              cellLimited Gauss linear 1;
+}
+
+laplacianSchemes
+{
+    default              Gauss linear corrected;
+
+TO DO:
+Re = 4e4
+scaling:
+Re = rho*v*l/mu
+l = Re*mu/(rho*v)
+
+added scaling file in system
+
+find scaling for achieving Re:
+l = 0.011697520654832238
+
+transformPoints -scale '(0.011697520654832238 0.011697520654832238 1)'
+
+changed omega to 98.something
+
+VERSION 0: has weird phenomenon in front of cylinder, could be cause of artifact in top of mesh

@@ -17,18 +17,18 @@ reardist = 30;
 
 nradial = 25;
 ncircle = 50;
-nfront = 32;
+nfront = 128;
 nback = 256;
-ntop = 32;
-nbot = 10;
-nbotwall = 12;
+ntop = 128;
+nbot = 20;
+nbotwall = 16;
 
 rwalnormal = 1.179557517012065;
 rback = 1.0122;
-rfront = 1.15;
-rtop = 1.15;
-rbot = 0.5;
-rbotwall = 1/1.3;
+rfront = 1.018;
+rtop = 1.02;
+rbot = 1;
+rbotwall = 1/1.22;
 
 //+
 Point(1) = {cd, cd, 0, 1.0};
@@ -280,8 +280,7 @@ Extrude {0, 0, 1} {
 //+
 Physical Volume("Fluid", 371) = {1, 2, 3, 4, 5, 6, 7, 8, 9, 15, 14, 13, 11, 12, 10};
 //+
-Physical Surface("Inlet", 372) = {365, 339, 317, 53, 57, 79, 101};
-
+Physical Surface("Inlet", 372) = {365, 339, 317, 53};
 //+
 Physical Surface("Botwall", 373) = {361, 189, 167};
 //+
@@ -292,3 +291,5 @@ Physical Surface("Outlet", 375) = {97, 123, 141, 163};
 Physical Surface("Side1", 376) = {3, 4, 5, 6, 2, 13, 12, 15, 14, 7, 8, 1, 11, 10, 9};
 //+
 Physical Surface("Side2", 377) = {370, 348, 326, 62, 84, 106, 304, 282, 238, 194, 216, 260, 128, 172, 150};
+//+
+Physical Surface("Freestream", 378) = {57, 79, 101};
